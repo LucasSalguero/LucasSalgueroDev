@@ -1,4 +1,6 @@
 import { ButtonLink } from "@/components/ui/Button";
+import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
+import { Icon } from "@/components/ui/Icon";
 import { RichText } from "@/components/ui/RichText";
 import type { Profile } from "@/lib/schemas";
 
@@ -16,9 +18,16 @@ export function Hero({ profile, featuredHref }: HeroProps) {
   return (
     <section className={styles.hero} id="inicio" aria-labelledby="inicio-titulo">
       <p className={styles.status}>{hero.status}</p>
-      <h1 id="inicio-titulo" className={styles.title}>
-        {hero.headline} <span>{hero.headlineAccent}</span>
+      <h1 id="inicio-titulo" className={styles.name}>
+        {profile.name}
       </h1>
+      <p className={styles.headline}>
+        {hero.headline} <span>{hero.headlineAccent}</span>
+      </p>
+      <p className={styles.location}>
+        <Icon name="pin" size={16} />
+        {profile.location}
+      </p>
       <p className={styles.lead}>
         <RichText text={hero.lead} />
       </p>
@@ -26,24 +35,17 @@ export function Hero({ profile, featuredHref }: HeroProps) {
         <ButtonLink href={featuredHref} variant="primary">
           Ver proyecto en producción
         </ButtonLink>
-        <ButtonLink href={profile.cvPath} external>
+        <ButtonLink href={profile.cvPath} icon="file" external>
           Descargar CV (PDF)
         </ButtonLink>
-        <ButtonLink href={links.github} external>
-          GitHub
-        </ButtonLink>
-        <ButtonLink href={links.linkedin} external>
+        <ButtonLink href={links.linkedin} icon="linkedin" external>
           LinkedIn
         </ButtonLink>
+        <ButtonLink href={links.github} icon="github" external>
+          GitHub
+        </ButtonLink>
+        <CopyEmailButton email={profile.email} />
       </div>
-      <dl className={styles.facts} aria-label="Datos destacados">
-        {hero.facts.map((fact) => (
-          <div key={fact.label}>
-            <dt>{fact.label}</dt>
-            <dd>{fact.value}</dd>
-          </div>
-        ))}
-      </dl>
     </section>
   );
 }

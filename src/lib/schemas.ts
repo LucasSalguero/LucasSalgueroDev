@@ -183,13 +183,14 @@ export const profileSchema = z.strictObject({
     headline: text,
     headlineAccent: text,
     lead: text,
-    facts: z.array(z.strictObject({ value: text, label: text })).min(1),
   }),
   projects: z.strictObject({ eyebrow: text, title: text }),
   about: z.strictObject({
     eyebrow: text,
     title: text,
     paragraphs: z.array(text).min(1),
+    /** Datos destacados que van al costado del texto. */
+    facts: z.array(z.strictObject({ value: text, label: text })).min(1),
   }),
   contact: z.strictObject({ eyebrow: text, title: text }),
   footer: text,
@@ -202,17 +203,31 @@ export const educationSchema = z.strictObject({
     .array(
       z.strictObject({
         period: text,
-        title: text.optional(),
+        title: text,
+        institution: text,
+        /** Sigla que se muestra en el recuadro de la institución, por ejemplo "UTN". */
+        monogram: z.string().trim().min(1).max(5),
         description: text,
       }),
     )
     .min(1),
 });
 
+export const skillItemSchema = z.strictObject({
+  name: text,
+  /** Ruta desde `public/`, por ejemplo `/images/tech/react.svg`. */
+  logo: z
+    .string()
+    .regex(/^\/images\/tech\/[a-z0-9-]+\.svg$/, "La ruta va en /images/tech/<archivo>.svg")
+    .optional(),
+  /** Logo de un solo color oscuro: se invierte en el tema oscuro para que se vea. */
+  monochrome: z.boolean().optional(),
+});
+
 export const skillsSchema = z.strictObject({
   eyebrow: text,
   title: text,
-  groups: z.array(z.strictObject({ label: text, items: z.array(text).min(1) })).min(1),
+  groups: z.array(z.strictObject({ label: text, items: z.array(skillItemSchema).min(1) })).min(1),
 });
 
 export type ProjectKind = z.infer<typeof projectKindSchema>;
@@ -224,4 +239,5 @@ export type Ticket = z.infer<typeof ticketSchema>;
 export type Project = z.infer<typeof projectSchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type Education = z.infer<typeof educationSchema>;
+export type SkillItem = z.infer<typeof skillItemSchema>;
 export type Skills = z.infer<typeof skillsSchema>;

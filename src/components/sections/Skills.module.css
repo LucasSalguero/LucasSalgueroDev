@@ -1,29 +1,78 @@
 .skills {
   display: grid;
-  gap: 16px;
   margin: 0;
+  padding: 8px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
 }
 
-.skills div {
+.group {
   display: grid;
-  grid-template-columns: 110px minmax(0, 1fr);
-  gap: 12px;
+  grid-template-columns: 130px minmax(0, 1fr);
+  align-items: start;
+  gap: 16px;
+  padding-block: 16px;
 }
 
-.skills dt {
-  font: 500 0.8rem var(--f-mono);
-  color: var(--muted);
-  padding-top: 3px;
+.group + .group {
+  border-top: 1px solid var(--line);
 }
 
-.skills dd {
+.group dt {
+  font: 600 0.9rem var(--f-body);
+  padding-top: 7px;
+}
+
+.group dd {
   margin: 0;
-  font-size: 0.95rem;
 }
 
-@media (max-width: 560px) {
-  .skills div {
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 4px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  font: 500 0.82rem var(--f-mono);
+}
+
+.item img {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+/* Logos negros: se invierten en el tema oscuro. */
+.monochrome {
+  filter: var(--logo-mono-filter);
+}
+
+@media (max-width: 640px) {
+  .skills {
+    padding-inline: 16px;
+  }
+
+  .group {
     grid-template-columns: minmax(0, 1fr);
-    gap: 2px;
+    gap: 8px;
+  }
+
+  .group dt {
+    padding-top: 0;
   }
 }

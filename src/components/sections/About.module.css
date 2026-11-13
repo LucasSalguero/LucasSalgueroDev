@@ -1,8 +1,65 @@
-.about p {
-  max-width: 65ch;
-  font-size: 1.05rem;
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 32px;
+  align-items: center;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
 }
 
-.about p + p {
-  margin-top: 14px;
+.text {
+  display: grid;
+  gap: 14px;
+  font-size: 1.05rem;
+  text-wrap: pretty;
+}
+
+.facts {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+  padding-left: 32px;
+  border-left: 1px solid var(--line);
+}
+
+/* El número va arriba aunque en el HTML el término esté primero. */
+.facts div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2px;
+}
+
+.facts dd {
+  margin: 0;
+  font: 700 1.8rem / 1.1 var(--f-display);
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+.facts dt {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 20px;
+  }
+
+  .facts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 20px 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 480px) {
+  .facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

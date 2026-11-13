@@ -1,9 +1,10 @@
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
-import { EducationAndSkills } from "@/components/sections/EducationAndSkills";
+import { Education } from "@/components/sections/Education";
 import { FeaturedProject } from "@/components/sections/FeaturedProject";
 import { Hero } from "@/components/sections/Hero";
 import { ProjectGrid } from "@/components/sections/ProjectGrid";
+import { Skills } from "@/components/sections/Skills";
 import { getEducation, getProfile, getSkills } from "@/lib/profile";
 import {
   getFeaturedProject,
@@ -36,7 +37,8 @@ export default function HomePage() {
         title={profile.projects.title}
         items={otherProjects}
       />
-      <EducationAndSkills education={getEducation()} skills={getSkills()} />
+      <Education education={getEducation()} />
+      <Skills skills={getSkills()} />
       <Contact profile={profile} />
     </>
   );

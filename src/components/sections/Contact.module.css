@@ -1,16 +1,32 @@
 .contact {
+  padding-block: 48px 72px;
+}
+
+.card {
   display: grid;
-  gap: 20px;
-  padding-block: 56px 72px;
-  border-top: 1px solid var(--line);
+  justify-items: center;
+  gap: 18px;
+  padding: 48px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+  text-align: center;
 }
 
 .title {
-  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+}
+
+.alternative {
+  color: var(--muted);
+  font-size: 0.92rem;
 }
 
 .actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
+  padding-top: 8px;
 }

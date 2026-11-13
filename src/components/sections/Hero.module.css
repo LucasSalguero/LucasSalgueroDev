@@ -1,7 +1,9 @@
 .hero {
-  padding-block: 36px 64px;
+  padding-block: 56px 40px;
   display: grid;
-  gap: 28px;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
 }
 
 .status {
@@ -25,20 +27,45 @@
   background: var(--live);
 }
 
-.title {
-  font-size: clamp(2.6rem, 7vw, 4.6rem);
+.name {
+  font-size: clamp(2.6rem, 8vw, 4.4rem);
   font-weight: 800;
   letter-spacing: -0.035em;
 }
 
-.title span {
+/* Subrayado de acento, igual al de los títulos de sección. */
+.name::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 16px auto 0;
+  border-radius: 4px;
+  background: var(--accent);
+}
+
+.headline {
+  font: 700 clamp(1.2rem, 3vw, 1.6rem) / 1.25 var(--f-display);
+  text-wrap: balance;
+}
+
+.headline span {
   color: var(--accent);
 }
 
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .lead {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-size: clamp(1.02rem, 2vw, 1.15rem);
   color: var(--muted);
   max-width: 62ch;
+  text-wrap: pretty;
 }
 
 .lead strong {
@@ -48,32 +75,8 @@
 
 .actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-}
-
-.facts {
-  display: flex;
-  gap: 16px 32px;
-  flex-wrap: wrap;
-  padding-top: 8px;
-  margin: 0;
-}
-
-/* El número va arriba aunque en el HTML el término esté primero. */
-.facts div {
-  display: flex;
-  flex-direction: column-reverse;
-  gap: 2px;
-}
-
-.facts dd {
-  margin: 0;
-  font: 700 1.6rem var(--f-display);
-  font-variant-numeric: tabular-nums;
-}
-
-.facts dt {
-  font-size: 0.85rem;
-  color: var(--muted);
+  padding-top: 12px;
 }
