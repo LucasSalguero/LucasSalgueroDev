@@ -15,6 +15,7 @@ Reglas cortas para que el repo se mantenga consistente. Ante la duda, elegir la 
 | Header y Footer                                | `src/components/layout/`         |
 | Colores, fuentes y medidas                     | `src/styles/tokens.css`          |
 | Capturas de proyectos                          | `public/images/projects/<slug>/` |
+| Logos de tecnologías (SVG)                     | `public/images/tech/`            |
 
 ### Dependencias entre capas
 
@@ -59,7 +60,7 @@ Los archivos de rutas siguen los nombres que pide Next.js: `page.tsx`, `layout.t
 
 - Componentes de función, uno por archivo, con export nombrado.
 - Server Components por defecto. `"use client"` solo si el componente necesita estado o eventos
-  (hoy, únicamente `CopyEmailButton`).
+  (hoy: `CopyEmailButton`, `NavLinks` y `ThemeToggle`).
 - Un componente sin datos no renderiza nada: no hay placeholders ni "próximamente".
 
 ## Estilos

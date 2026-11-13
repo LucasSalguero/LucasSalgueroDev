@@ -6,8 +6,8 @@ componentes.
 | Archivo                         | Qué contiene                                              |
 | ------------------------------- | --------------------------------------------------------- |
 | `src/content/profile.ts`        | Nombre, rol, textos del inicio, "Sobre mí", links y email |
-| `src/content/education.ts`      | Estudios e idiomas                                        |
-| `src/content/skills.ts`         | Habilidades agrupadas                                     |
+| `src/content/education.ts`      | Estudios                                                  |
+| `src/content/skills.ts`         | Habilidades agrupadas (con su logo) e idiomas             |
 | `src/content/projects/*.ts`     | Un archivo por proyecto                                   |
 | `src/content/projects/index.ts` | Lista de proyectos que se publican                        |
 
@@ -193,3 +193,15 @@ celda).
   el teléfono.
 - **URL del sitio:** campo `siteUrl` de `profile.ts`. Se usa en el sitemap, las URLs canónicas
   y Open Graph.
+
+## Agregar una habilidad con logo
+
+En `src/content/skills.ts`, cada habilidad es un objeto dentro de su grupo:
+
+```ts
+{ name: "Docker", logo: "/images/tech/docker.svg" }
+```
+
+- `logo` es opcional. El archivo SVG va en `public/images/tech/`; un test verifica que exista.
+- `monochrome: true` es para logos negros (Next.js, Vercel): se invierten en el tema oscuro.
+- Los logos actuales salen de [Devicon](https://devicon.dev) (licencia MIT).

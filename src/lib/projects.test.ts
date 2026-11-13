@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import { education } from "@/content/education";
@@ -57,6 +60,17 @@ describe("contenido real", () => {
     expect(profileSchema.safeParse(profile).success).toBe(true);
     expect(educationSchema.safeParse(education).success).toBe(true);
     expect(skillsSchema.safeParse(skills).success).toBe(true);
+  });
+
+  it("los logos de las habilidades existen en public/", () => {
+    const logos = skills.groups.flatMap((group) =>
+      group.items.flatMap((item) => (item.logo ? [item.logo] : [])),
+    );
+
+    expect(logos.length).toBeGreaterThan(0);
+    for (const logo of logos) {
+      expect(existsSync(join(process.cwd(), "public", logo)), logo).toBe(true);
+    }
   });
 
   it("el teléfono no aparece en el contenido", () => {

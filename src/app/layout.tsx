@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { getProfile } from "@/lib/profile";
+import { getFeaturedProject } from "@/lib/projects";
 
 import { fontVariables } from "./fonts";
 
@@ -11,6 +12,13 @@ import "@/styles/tokens.css";
 import "@/styles/globals.css";
 
 const profile = getProfile();
+const featured = getFeaturedProject();
+
+/**
+ * Aplica el tema elegido antes del primer pintado, para que no parpadee.
+ * La clave "theme" es la misma que usa ThemeToggle.
+ */
+const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.siteUrl),
@@ -47,15 +55,29 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="es-AR" className={fontVariables} data-scroll-behavior="smooth">
+    <html
+      lang="es-AR"
+      className={fontVariables}
+      data-scroll-behavior="smooth"
+      // El script de tema agrega data-theme antes de que React hidrate.
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <a className="skip-link" href="#contenido">
           Saltar al contenido
         </a>
         <div className="wrap">
-          <Header name={profile.name} />
+          <Header name={profile.name} featured={{ id: featured.slug, label: featured.title }} />
           <main id="contenido">{children}</main>
-          <Footer text={profile.footer} />
+          <Footer
+            text={profile.footer}
+            github={profile.links.github}
+            linkedin={profile.links.linkedin}
+            cvPath={profile.cvPath}
+          />
         </div>
       </body>
     </html>

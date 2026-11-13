@@ -32,6 +32,7 @@ export function FeaturedProject({ project, href, eyebrow }: FeaturedProjectProps
         eyebrow={eyebrow}
         title={project.heading ?? project.title}
         description={project.summary}
+        align="center"
       />
 
       <div className={project.ticket ? styles.case : undefined}>

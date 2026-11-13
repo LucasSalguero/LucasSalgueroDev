@@ -6,7 +6,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 16px;
+  scroll-padding-top: calc(var(--header-height) + 24px);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -27,6 +27,9 @@ html {
 body {
   margin: 0;
   background: var(--bg);
+  /* Degradé suave detrás del encabezado. */
+  background-image: linear-gradient(var(--accent-soft), transparent 420px);
+  background-repeat: no-repeat;
   color: var(--fg);
   font: 400 16px/1.6 var(--f-body);
   padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
@@ -100,7 +103,7 @@ img {
   position: absolute;
   left: 16px;
   top: -100px;
-  z-index: 10;
+  z-index: 30;
   display: inline-flex;
   align-items: center;
   min-height: var(--tap-target);

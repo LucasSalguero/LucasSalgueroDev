@@ -1,10 +1,22 @@
+/* Menú fijo: siempre a mano, sin tener que volver al inicio de la página. */
+.header {
+  position: sticky;
+  top: 8px;
+  z-index: 20;
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
 .nav {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   gap: 0 16px;
-  padding-block: 8px;
-  flex-wrap: wrap;
+  padding: 4px 8px 4px 16px;
 }
 
 .brand {
@@ -16,30 +28,15 @@
   text-decoration: none;
 }
 
-.links {
-  display: flex;
-  gap: 0 20px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-}
+/* Dos filas: nombre y tema arriba, links abajo con scroll horizontal. */
+@media (max-width: 720px) {
+  .nav {
+    grid-template-columns: minmax(0, 1fr) auto;
+    padding-left: 12px;
+  }
 
-.links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: var(--tap-target);
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 0.92rem;
-}
-
-.links a:hover {
-  color: var(--fg);
-}
-
-@media (max-width: 560px) {
-  .links {
-    gap: 0 14px;
+  .nav > ul {
+    grid-column: 1 / -1;
+    grid-row: 2;
   }
 }

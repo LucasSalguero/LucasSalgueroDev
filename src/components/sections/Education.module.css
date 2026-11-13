@@ -1,14 +1,47 @@
-.timeline {
+.list {
   display: grid;
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.timeline li {
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--surface);
+  box-shadow: var(--shadow-card);
+}
+
+/* Recuadro con la sigla de la institución. */
+.monogram {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-lg);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font: 700 0.95rem var(--f-display);
+  letter-spacing: 0.02em;
+}
+
+.body {
   display: grid;
   gap: 4px;
+  min-width: 0;
+}
+
+.institution {
+  color: var(--accent);
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .when {
@@ -17,7 +50,14 @@
   font-variant-numeric: tabular-nums;
 }
 
-.timeline p {
+.description {
+  margin-top: 6px;
   color: var(--muted);
   font-size: 0.94rem;
+}
+
+@media (max-width: 860px) {
+  .list {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

@@ -1,6 +1,5 @@
 .section {
-  padding-block: 56px;
-  border-top: 1px solid var(--line);
+  padding-block: 48px;
 }
 
 .head {
@@ -10,6 +9,27 @@
   max-width: 70ch;
 }
 
+/* Subrayado de acento debajo del título. */
+.head h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 3px;
+  margin-top: 12px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
 .head p {
   color: var(--muted);
+}
+
+.center {
+  margin-inline: auto;
+  text-align: center;
+  justify-items: center;
+}
+
+.center h2::after {
+  margin-inline: auto;
 }

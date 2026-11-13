@@ -20,6 +20,16 @@
   --live-soft: #e3f4ea;
   --paper: #fffdf6;
   --paper-ink: #2a2a26;
+  --danger: #b3261e;
+  --header-bg: rgb(245 246 249 / 0.85);
+  --toast-bg: #131722;
+  --toast-fg: #f5f6f9;
+  --shadow-card: 0 12px 32px -20px rgb(19 23 34 / 0.35);
+
+  /* Cambian con el tema: mostrar un ícono u otro e invertir logos de un solo color. */
+  --on-light: 1;
+  --on-dark: 0;
+  --logo-mono-filter: none;
 
   /* Tipografía (las variables --font-* las define next/font en layout.tsx) */
   --f-display: var(--font-display), "Segoe UI", system-ui, sans-serif;
@@ -33,6 +43,15 @@
   --radius-sm: 6px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
+  --header-height: 60px;
+}
+
+/* En pantallas chicas el menú ocupa dos filas. */
+@media (max-width: 720px) {
+  :root {
+    --header-height: 104px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -49,6 +68,14 @@
     --live-soft: #15301f;
     --paper: #1d1f1a;
     --paper-ink: #e9e6d8;
+    --danger: #ff8a80;
+    --header-bg: rgb(14 17 24 / 0.85);
+    --toast-bg: #e8ebf2;
+    --toast-fg: #0e1118;
+    --shadow-card: 0 12px 32px -20px rgb(0 0 0 / 0.7);
+    --on-light: 0;
+    --on-dark: 1;
+    --logo-mono-filter: invert(1);
   }
 }
 
@@ -65,4 +92,12 @@
   --live-soft: #15301f;
   --paper: #1d1f1a;
   --paper-ink: #e9e6d8;
+  --danger: #ff8a80;
+  --header-bg: rgb(14 17 24 / 0.85);
+  --toast-bg: #e8ebf2;
+  --toast-fg: #0e1118;
+  --shadow-card: 0 12px 32px -20px rgb(0 0 0 / 0.7);
+  --on-light: 0;
+  --on-dark: 1;
+  --logo-mono-filter: invert(1);
 }

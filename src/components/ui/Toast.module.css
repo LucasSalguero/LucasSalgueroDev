@@ -1,0 +1,72 @@
+.region {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  padding-inline: var(--gutter);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(520px, 100%);
+  padding: 6px 6px 6px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--toast-bg);
+  color: var(--toast-fg);
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-card);
+  pointer-events: auto;
+  animation: enter 0.2s ease-out;
+}
+
+.error {
+  border-left: 4px solid var(--danger);
+}
+
+.icon {
+  flex: none;
+}
+
+.text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  /* Si no se pudo copiar, el email se puede seleccionar a mano desde el aviso. */
+  user-select: text;
+}
+
+.close {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-target);
+  height: var(--tap-target);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.close:hover {
+  opacity: 0.7;
+}
+
+.close:focus-visible {
+  outline-color: var(--toast-fg);
+  outline-offset: -4px;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}

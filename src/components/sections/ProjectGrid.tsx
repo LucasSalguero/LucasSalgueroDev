@@ -19,7 +19,7 @@ interface ProjectGridProps {
 export function ProjectGrid({ eyebrow, title, items }: ProjectGridProps) {
   return (
     <Section id="proyectos" labelledBy="proyectos-titulo">
-      <SectionHeading id="proyectos-titulo" eyebrow={eyebrow} title={title} />
+      <SectionHeading id="proyectos-titulo" eyebrow={eyebrow} title={title} align="center" />
       <div className={styles.grid}>
         {items.map((item) => (
           <ProjectCard key={item.project.slug} {...item} />
