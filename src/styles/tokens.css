@@ -16,7 +16,7 @@
   --line: #dde1ea;
   --accent: #2b54e0;
   --accent-soft: #e6ecfd;
-  --live: #1f8a4c;
+  --live: #197540; /* el #1f8a4c original no llegaba a AA (3,8:1) sobre --live-soft */
   --live-soft: #e3f4ea;
   --paper: #fffdf6;
   --paper-ink: #2a2a26;

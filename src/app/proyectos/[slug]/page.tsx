@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ProjectDetail } from "@/components/project/ProjectDetail";
 import { ProjectHeader } from "@/components/project/ProjectHeader";
 import { ProjectNav, type ProjectNavLink } from "@/components/project/ProjectNav";
+import { getProfile } from "@/lib/profile";
 import {
   getAdjacentProjects,
   getAllProjects,
@@ -37,6 +38,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: { canonical: path },
     openGraph: {
       type: "article",
+      locale: "es_AR",
+      siteName: getProfile().name,
       title: project.title,
       description: project.tagline,
       url: path,

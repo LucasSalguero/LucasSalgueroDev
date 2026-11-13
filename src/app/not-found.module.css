@@ -1,0 +1,22 @@
+.notFound {
+  display: grid;
+  gap: 20px;
+  padding-block: 72px 96px;
+}
+
+.title {
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.text {
+  color: var(--muted);
+  max-width: 62ch;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}

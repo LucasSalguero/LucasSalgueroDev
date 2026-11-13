@@ -55,7 +55,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       {project.features.length > 0 ? (
         <Section labelledBy="funcionalidades-titulo">
           <SectionHeading id="funcionalidades-titulo" eyebrow="Funcionalidades" title="Qué hace" />
-          <FeatureGrid features={project.features} />
+          <FeatureGrid features={project.features} headingLevel="h3" />
         </Section>
       ) : null}
 
@@ -68,7 +68,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           />
           <div className={project.ticket ? styles.case : undefined}>
             <div className={styles.caseBody}>
-              <DecisionGrid decisions={project.decisions} />
+              <DecisionGrid decisions={project.decisions} headingLevel="h3" />
               {project.offlineFlow ? <OfflineFlow flow={project.offlineFlow} /> : null}
               {project.note ? <p className={styles.note}>{project.note}</p> : null}
             </div>
