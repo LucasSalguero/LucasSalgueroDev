@@ -25,6 +25,7 @@ export default function HomePage() {
   return (
     <>
       <Hero profile={profile} featuredHref={`#${featured.slug}`} />
+      <About about={profile.about} />
       <FeaturedProject
         project={featured}
         href={getProjectPath(featured.slug)}
@@ -36,7 +37,6 @@ export default function HomePage() {
         items={otherProjects}
       />
       <EducationAndSkills education={getEducation()} skills={getSkills()} />
-      <About about={profile.about} />
       <Contact profile={profile} />
     </>
   );
