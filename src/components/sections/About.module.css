@@ -1,0 +1,8 @@
+.about p {
+  max-width: 65ch;
+  font-size: 1.05rem;
+}
+
+.about p + p {
+  margin-top: 14px;
+}

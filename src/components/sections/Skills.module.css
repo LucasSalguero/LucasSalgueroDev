@@ -1,0 +1,29 @@
+.skills {
+  display: grid;
+  gap: 16px;
+  margin: 0;
+}
+
+.skills div {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.skills dt {
+  font: 500 0.8rem var(--f-mono);
+  color: var(--muted);
+  padding-top: 3px;
+}
+
+.skills dd {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 560px) {
+  .skills div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}

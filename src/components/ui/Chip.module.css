@@ -8,7 +8,7 @@
 }
 
 .chip {
-  font: 500 0.78rem/1.6 var(--f-mono);
+  font: 500 0.78rem var(--f-mono);
   padding: 4px 10px;
   border-radius: var(--radius-sm);
   background: var(--accent-soft);

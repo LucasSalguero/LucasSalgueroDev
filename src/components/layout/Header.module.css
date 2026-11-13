@@ -1,0 +1,45 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0 16px;
+  padding-block: 8px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  font: 700 1rem var(--f-display);
+  color: var(--fg);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 0 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-target);
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.links a:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 560px) {
+  .links {
+    gap: 0 14px;
+  }
+}

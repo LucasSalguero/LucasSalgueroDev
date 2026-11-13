@@ -1,0 +1,34 @@
+.case {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+.body {
+  display: grid;
+  gap: 28px;
+  min-width: 0;
+}
+
+.blockTitle {
+  margin-bottom: 14px;
+}
+
+.note {
+  color: var(--muted);
+  max-width: 65ch;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .case {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

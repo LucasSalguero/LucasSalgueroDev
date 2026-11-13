@@ -96,7 +96,7 @@ export const miKiosco: Project = {
     {
       title: "Calidad",
       description:
-        "16 archivos de tests con `node:test`. CI en cada push y PR: tests, typecheck y lint. Diez migraciones versionadas.",
+        "19 archivos de tests con `node:test`. CI en cada push y PR: tests, typecheck y lint. Nueve migraciones versionadas.",
     },
   ],
   role: "Proyecto propio: relevamiento con el dueño del comercio, definición del MVP, desarrollo full stack y mantenimiento.",
