@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      next-y-react:
+        patterns: ["next", "react", "react-dom", "eslint-config-next", "@types/react*"]
+      herramientas:
+        dependency-type: development
+        update-types: [minor, patch]
+    ignore:
+      # El stack está fijado en Next.js 15 (ver docs/adr/0001).
+      - dependency-name: next
+        update-types: [version-update:semver-major]
+      - dependency-name: eslint-config-next
+        update-types: [version-update:semver-major]
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
