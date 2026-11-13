@@ -1,0 +1,68 @@
+/*
+ * Tokens de diseño. Es la única fuente de colores y tipografías del sitio:
+ * los CSS Modules consumen estas variables y nunca definen valores sueltos.
+ *
+ * El tema sigue al sistema operativo (prefers-color-scheme). El atributo
+ * data-theme="light" | "dark" en <html> permite forzarlo.
+ */
+:root {
+  color-scheme: light;
+
+  /* Color */
+  --bg: #f5f6f9;
+  --surface: #ffffff;
+  --fg: #131722;
+  --muted: #5a6273;
+  --line: #dde1ea;
+  --accent: #2b54e0;
+  --accent-soft: #e6ecfd;
+  --live: #1f8a4c;
+  --live-soft: #e3f4ea;
+  --paper: #fffdf6;
+  --paper-ink: #2a2a26;
+
+  /* Tipografía (las variables --font-* las define next/font en layout.tsx) */
+  --f-display: var(--font-display), "Segoe UI", system-ui, sans-serif;
+  --f-body: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* Medidas */
+  --content-width: 1080px;
+  --gutter: 16px;
+  --tap-target: 44px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0e1118;
+    --surface: #161a24;
+    --fg: #e8ebf2;
+    --muted: #9ba3b4;
+    --line: #272d3b;
+    --accent: #7d9bff;
+    --accent-soft: #1c2440;
+    --live: #5bd08d;
+    --live-soft: #15301f;
+    --paper: #1d1f1a;
+    --paper-ink: #e9e6d8;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e1118;
+  --surface: #161a24;
+  --fg: #e8ebf2;
+  --muted: #9ba3b4;
+  --line: #272d3b;
+  --accent: #7d9bff;
+  --accent-soft: #1c2440;
+  --live: #5bd08d;
+  --live-soft: #15301f;
+  --paper: #1d1f1a;
+  --paper-ink: #e9e6d8;
+}

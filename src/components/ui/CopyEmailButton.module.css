@@ -1,0 +1,12 @@
+.mail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.address {
+  font: 500 1.05rem var(--f-mono);
+  user-select: all;
+  word-break: break-all;
+}
