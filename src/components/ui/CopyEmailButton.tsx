@@ -4,19 +4,22 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "./Button";
 import styles from "./CopyEmailButton.module.css";
+import { Icon } from "./Icon";
+import { Toast, type ToastMessage } from "./Toast";
 
-type Status = "idle" | "copied" | "selected";
+const SUCCESS_MS = 4000;
+/** El aviso de error muestra el email para copiarlo a mano: queda más tiempo. */
+const ERROR_MS = 12000;
 
-const LABELS: Record<Status, string> = {
-  idle: "Copiar email",
-  copied: "Copiado",
-  selected: "Seleccionado",
-};
+interface CopyEmailButtonProps {
+  email: string;
+  /** `button`: botón "Copiar email". `address`: la dirección completa, clickeable. */
+  variant?: "button" | "address";
+}
 
-/** Muestra el email y lo copia al portapapeles. Si no puede, lo deja seleccionado. */
-export function CopyEmailButton({ email }: { email: string }) {
-  const [status, setStatus] = useState<Status>("idle");
-  const emailRef = useRef<HTMLSpanElement>(null);
+/** Copia el email al portapapeles y avisa con un toast si pudo o no. */
+export function CopyEmailButton({ email, variant = "button" }: CopyEmailButtonProps) {
+  const [message, setMessage] = useState<ToastMessage | null>(null);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
@@ -25,41 +28,49 @@ export function CopyEmailButton({ email }: { email: string }) {
     };
   }, []);
 
-  function show(next: Status) {
-    setStatus(next);
+  function close() {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => setStatus("idle"), 2000);
+    setMessage(null);
   }
 
-  function selectText() {
-    const node = emailRef.current;
-    const selection = window.getSelection();
-    if (!node || !selection) return;
-
-    const range = document.createRange();
-    range.selectNodeContents(node);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    show("selected");
+  function notify(next: ToastMessage, duration: number) {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setMessage(next);
+    timeoutRef.current = setTimeout(() => setMessage(null), duration);
   }
 
   async function handleClick() {
     try {
       await navigator.clipboard.writeText(email);
-      show("copied");
+      notify({ tone: "success", text: `Email copiado: ${email}` }, SUCCESS_MS);
     } catch {
-      selectText();
+      notify({ tone: "error", text: `No se pudo copiar. Mi email es ${email}` }, ERROR_MS);
     }
   }
 
+  const copied = message?.tone === "success";
+
   return (
-    <div className={styles.mail}>
-      <span ref={emailRef} className={styles.address}>
-        {email}
-      </span>
-      <Button onClick={handleClick}>
-        <span aria-live="polite">{LABELS[status]}</span>
-      </Button>
-    </div>
+    <>
+      {variant === "address" ? (
+        <button
+          className={styles.address}
+          type="button"
+          onClick={handleClick}
+          aria-label={`Copiar email ${email}`}
+        >
+          <span className={styles.email}>{email}</span>
+          <span className={styles.hint}>
+            <Icon name={copied ? "check" : "copy"} size={16} />
+            {copied ? "Copiado" : "Copiar"}
+          </span>
+        </button>
+      ) : (
+        <Button onClick={handleClick} icon={copied ? "check" : "mail"}>
+          {copied ? "Email copiado" : "Copiar email"}
+        </Button>
+      )}
+      <Toast message={message} onClose={close} />
+    </>
   );
 }
