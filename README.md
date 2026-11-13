@@ -7,6 +7,12 @@ Portafolio de **Lucas Salguero**, desarrollador Full Stack Junior de Córdoba, A
 El repositorio es parte del portafolio: el contenido está separado del código, las decisiones
 de arquitectura están documentadas y cada cambio pasa por CI.
 
+| Home                                                               | Página de proyecto                                                     |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| ![Home en modo claro](docs/screenshots/home-escritorio-claro.webp) | ![Detalle de Mi Kiosco](docs/screenshots/detalle-mi-kiosco-claro.webp) |
+
+Más capturas (modo oscuro y celular) en [`docs/screenshots/`](docs/screenshots).
+
 ## Qué tiene
 
 - **Home** con el perfil, Mi Kiosco como caso de estudio destacado, el resto de los proyectos,
