@@ -38,7 +38,7 @@ La regla se cumple sola: `eslint.config.mjs` usa `no-restricted-imports` para qu
 ### Dentro de `components/`
 
 - `ui/`: piezas chicas sin conocimiento del dominio (`Button`, `Chip`, `Eyebrow`, `Section`,
-  `InfoGrid`, `Ticket`, `CopyEmailButton`, `ArrowLink`, `RichText`).
+  `InfoGrid`, `Ticket`, `CopyEmailButton`, `Toast`, `Icon`, `ArrowLink`, `RichText`).
 - `project/`: piezas que muestran un proyecto (`ProjectCard`, `ProjectHeader`, `ProjectDetail`,
   `Gallery`, `FeatureGrid`, `DecisionGrid`, `OfflineFlow`, `ProjectNav`).
 - `sections/`: secciones de la home (`Hero`, `FeaturedProject`, `ProjectGrid`, `Education`,
@@ -108,12 +108,18 @@ optimización de imágenes en el servidor ni rutas dinámicas.
 - Cada componente tiene su CSS Module y solo consume tokens.
 
 El tema sigue al sistema operativo con `prefers-color-scheme`. El atributo `data-theme` en
-`<html>` permite forzar uno, y deja preparado el lugar para un selector de tema.
+`<html>` permite forzar uno: lo escribe `ThemeToggle` (el botón del menú), que guarda la
+elección en `localStorage`. Un script mínimo en `app/layout.tsx` la aplica antes del primer
+pintado para que la página no parpadee.
 
 ## Qué corre en el navegador
 
-Casi nada: todos los componentes son Server Components y se renderizan en el build. El único
-Client Component es `CopyEmailButton`, que necesita el portapapeles.
+Casi nada: los componentes son Server Components y se renderizan en el build. Los Client
+Components son tres:
+
+- `CopyEmailButton`: copia el email al portapapeles y avisa con un `Toast`.
+- `NavLinks`: marca en el menú la sección de la home que se está leyendo.
+- `ThemeToggle`: cambia entre tema claro y oscuro.
 
 ## Calidad
 
