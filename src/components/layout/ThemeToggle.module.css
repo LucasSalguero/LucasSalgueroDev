@@ -1,0 +1,32 @@
+.toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-target);
+  height: var(--tap-target);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  color: var(--fg);
+}
+
+/* Se muestra el ícono del tema al que se cambia. */
+.moon,
+.sun {
+  position: absolute;
+  transition: opacity 0.15s ease;
+}
+
+.moon {
+  opacity: var(--on-light);
+}
+
+.sun {
+  opacity: var(--on-dark);
+}
