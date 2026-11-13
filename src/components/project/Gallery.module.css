@@ -1,0 +1,44 @@
+.gallery,
+.single {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.figure {
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+/* Marco 16:10: la captura se muestra entera, sin recortes. */
+.frame {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.frame img {
+  object-fit: contain;
+}
+
+.figure figcaption {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

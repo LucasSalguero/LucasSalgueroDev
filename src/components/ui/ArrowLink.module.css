@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  gap: 4px 16px;
+  flex-wrap: wrap;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  min-height: var(--tap-target);
+  font-weight: 500;
+}

@@ -12,10 +12,9 @@ updates:
         dependency-type: development
         update-types: [minor, patch]
     ignore:
-      # El stack está fijado en Next.js 15 (ver docs/adr/0001).
-      - dependency-name: next
-        update-types: [version-update:semver-major]
-      - dependency-name: eslint-config-next
+      # Las versiones mayores se migran a mano, con su propio PR (el stack está
+      # fijado en Next.js 15: ver docs/adr/0001).
+      - dependency-name: "*"
         update-types: [version-update:semver-major]
 
   - package-ecosystem: github-actions

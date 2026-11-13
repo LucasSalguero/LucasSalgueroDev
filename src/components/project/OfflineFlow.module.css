@@ -1,0 +1,68 @@
+.title {
+  margin-bottom: 6px;
+}
+
+.intro {
+  color: var(--muted);
+  margin-bottom: 18px;
+  max-width: 65ch;
+}
+
+.flow {
+  display: grid;
+  gap: 0;
+  counter-reset: paso;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flow li {
+  counter-increment: paso;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 14px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+.flow li:last-child {
+  padding-bottom: 0;
+}
+
+.flow li::before {
+  content: counter(paso);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  display: grid;
+  place-items: center;
+  font: 600 0.8rem var(--f-mono);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+.flow li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 13.5px;
+  top: 28px;
+  bottom: 0;
+  width: 1.5px;
+  background: var(--line);
+}
+
+.flow p {
+  font-size: 0.95rem;
+  padding-top: 3px;
+}
+
+.flow code {
+  font-size: 0.85em;
+  background: var(--accent-soft);
+  padding: 1px 5px;
+  border-radius: 4px;
+}

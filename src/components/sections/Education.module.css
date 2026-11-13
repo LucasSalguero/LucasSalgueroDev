@@ -1,0 +1,23 @@
+.timeline {
+  display: grid;
+  gap: 22px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline li {
+  display: grid;
+  gap: 4px;
+}
+
+.when {
+  font: 500 0.8rem var(--f-mono);
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline p {
+  color: var(--muted);
+  font-size: 0.94rem;
+}

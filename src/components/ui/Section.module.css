@@ -1,0 +1,15 @@
+.section {
+  padding-block: 56px;
+  border-top: 1px solid var(--line);
+}
+
+.head {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 32px;
+  max-width: 70ch;
+}
+
+.head p {
+  color: var(--muted);
+}

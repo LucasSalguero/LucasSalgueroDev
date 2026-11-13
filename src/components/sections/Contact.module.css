@@ -1,0 +1,16 @@
+.contact {
+  display: grid;
+  gap: 20px;
+  padding-block: 56px 72px;
+  border-top: 1px solid var(--line);
+}
+
+.title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
